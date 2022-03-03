@@ -1,1 +1,25 @@
-<h1>Users index page</h1>
+<h1 class = "p-4 text-center " >List of all users</h1>
+
+<% @users.each do |user| %>
+
+<div class="d-flex row justify-content-center">
+  <div class= "card text-dark bg-light  p-0 m-2" style="max-width: 10rem">
+
+      <div class=" border-end pr-2">
+          <%= image_tag("images.png", :alt => "rss feed", class: 'img-fluid rounded-start')   %>
+    </div>
+  </div>
+
+  <div class="card text-dark bg-light m-2 d-flex flex-row" style="max-width: 600px;">
+    <div class="col-md-4  d-flex align-items-center">
+      <h5 class="card-title"> <%= link_to user.name, user_url(user), class: 'display-5 text-primary' %></h5> 
+    </div>
+
+    <div class = " col-md-7 d-flex align-items-end justify-content-end" >
+      <p class="text-right">Number of posts: 
+        <%= user.posts_counter ?  user.posts_counter : 0   %>
+        </p>
+      </p>
+    </div>  
+  </div>
+<% end %>
