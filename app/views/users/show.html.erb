@@ -1,1 +1,57 @@
-<h1>Users show page</h1>
+<div class="d-flex row justify-content-center mt-5">
+  <div class= "card text-dark bg-light  p-0 m-1" style="max-width: 7rem" >
+      <div class=" border-end pr-2">
+        <%= image_tag("images.png", :alt => "rss feed", class: 'img-fluid rounded-start')   %>
+      </div>
+  </div>
+
+  <div class="card text-dark bg-light m-1 d-flex flex-row col-md-8">
+    <div class="col-md-4  d-flex align-items-center">
+      <h5 class="card-title"> <%= link_to @user.name, user_url(@user), class: 'display-5 text-primary' %></h5> 
+    </div>
+
+    <div class = " col-md-7  d-flex align-items-end justify-content-end" >
+      <p class="text-right">Number of posts: 
+        <% @user.posts_counter ?  @user.posts_counter : 0   %>
+        </p>
+    </div>  
+  </div>
+
+    <div class = "card text-white bg-info col-md-9 m-1 d-flex" >
+      <h1>Bio:</h1>
+     <p><%= @user.bio   %></p>
+    </div>
+
+    <div class = "col-md-9 m-1  p-3 d-flex" >
+      <h2><%= @user.name%>'s 3 recent posts: </h2>
+    </div>
+
+    <% @user.three_recent_post.each do |post| %>
+      <div class = "  card col-md-9 m-1  p-3 d-flex" >
+      <% if post.comments_counter %>
+        <a href="/users/<%= @user.id %>/posts/<%= post.id %>"><p class="m-0"><h5> Post# <%=  post.id %> </h5></a>
+      <% else %>  
+        <h5> Post# <%=  post.id %> </h5>
+      <% end%>  
+        <p><%= post.title %></p>
+        <p><%= post.text %></p>
+        <div class = " col-md-11   d-flex align-items-end justify-content-end" >
+      <p class="text-right"> Likes: <%= post.likes_counter ? post.likes_counter : 0  %>&nbsp</p>
+      <p class="text-right"> &nbsp Comments: <%= post.comments_counter ? post.comments_counter : 0 %></p>
+        </div>  
+      </div>
+
+    <%end%>
+  <div class="row">
+    <div class = "col-md-10 m-auto pb-5 d-flex justify-content-center" >
+      <div class= "mt-4">
+        <%= link_to "See all posts", user_posts_path(@user), class:'btn btn-xs btn-outline-primary' %>  
+        <%= link_to "See all users", root_url, class:'btn btn-xs btn-outline-success' %>  
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+

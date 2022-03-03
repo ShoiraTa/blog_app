@@ -1,1 +1,69 @@
-<h1>Posts index page</h1>
+
+<div class="d-flex row justify-content-center mt-5">
+  <div class= "card text-dark bg-light  p-0 m-1" style="max-width: 7rem" >
+      <div class=" border-end pr-2">
+        <%= image_tag("images.png", :alt => "rss feed", class: 'img-fluid rounded-start')   %>
+      </div>
+  </div>
+
+  <div class="card text-dark bg-light m-1 d-flex flex-row col-md-8 justify-content-between">
+    <div class="  d-flex align-items-center">
+      <h2 class="card-title    text-primary"> All post written by <%= @user.name %></h2> 
+    </div>
+
+    <div class = " d-flex align-items-end justify-content-end" >
+      <p class="text-right">Number of posts: 
+        <%= @user.posts_counter ?  @user.posts_counter : 0  %>
+      </p>
+    </div>  
+  </div>
+
+  <% @user.posts.each do |post| %>
+
+  <div class = "bg-light card col-md-9 m-1  p-3 d-flex" >
+    <h3>Post# <%=  post.id %> </h3>
+    <p><%= post.title %></p>
+    <p><%= post.text %></p>
+    
+    <div class = " d-flex align-items-end justify-content-end" >
+      <p class="text-right"> Likes: <%= post.likes_counter ? post.likes_counter : 0  %>&nbsp</p>
+      <p class="text-right"> &nbsp Comments: <%= post.comments_counter ? post.comments_counter : 0 %></p>
+    </div>  
+  </div>
+
+  <div class = "card  bg-light col-md-9 mb-5  p-3 d-flex" >
+    <% if post.five_last_comments.length > 0 %>
+      <h3>Comments for post# <%=  post.id %> </h3>
+        <div>
+            <% post.five_last_comments.each do |comment| %>
+                <p><%= comment.author.name %>: <%= comment.text %></p>
+            <% end %>
+        </div>
+    <% else %>
+    <h3>No comments for post# <%=  post.id %> </h3>
+    <% end %>
+    <div class="row">
+      <div class = "m-auto pb-2 d-flex" >
+        <div class= "mt-4">
+          <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class='btn btn-xs btn-outline-primary'><p class="m-0">See this post</p></a>
+        </div>
+      </div>
+    </div>
+    
+
+  </div>
+
+  <%end%>
+
+  <div class="row">
+    <div class = "col-md-10 m-auto pb-5 d-flex justify-content-center" >
+      <div class= "mt-4">
+        <%= link_to "See all users", root_url, class:'btn btn-xs btn-outline-success' %>  
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+

@@ -14,7 +14,6 @@
 - OOP
 
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -29,6 +28,7 @@ To get a local copy up and running follow these simple example steps.
 - create database in your postgre called `Blog_development`
 - run `rails db:migrate`
 - To run the test run `rspec` in your command prompt.
+- To run the rails server run  `rails s` in your command prompt.
 
 ## Author
 👤 **Shoira**
