@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments)
+    @current_user = current_user
   end
 
   def show
@@ -18,13 +19,12 @@ class PostsController < ApplicationController
     @post.likes_counter = 0
     @post.comments_counter = 0
     @user = current_user
-    if post.save 
+    if @post.save 
       flash[:success] = 'Post was saved'
-      redirect_to "/users/#{post.author.id}/posts/"
+      redirect_to "/users/#{@post.author.id}/posts/"
     else
       render :new
     end
-
   end
 
   private

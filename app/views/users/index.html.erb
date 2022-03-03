@@ -1,4 +1,12 @@
-<h1 class = "p-4 text-center " >List of all users</h1>
+<div class="d-flex align-items-center  justify-content-between col-6 m-auto"> 
+  <div>
+  <h1 class = "p-4 text-center " >List of all users</h1>
+    </div>
+  <div>
+  <%= link_to 'Create a new post', new_user_post_url(1) , class: 'btn btn-outline-success btn-sm'%>
+  </div>
+  
+</div>
 
 <% @users.each do |user| %>
 

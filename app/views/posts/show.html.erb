@@ -9,26 +9,46 @@
     <div class="d-flex flex-row justify-content-between" >
       <p class="text-right"> Likes: <%= @post.likes_counter ? @post.likes_counter : 0  %>&nbsp</p>
       <p class="text-right"> &nbsp Comments: <%= @post.comments_counter ? @post.comments_counter : 0 %></p>
-    </div>  
+    </div> 
+
   </div>
 
   <div>
     <%=  @post.text %>
+    <div class="d-flex justify-content-end">
+      <%= form_with url: "#{@post.id}/likes" do |f| %>
+        <%= f.submit "like", :type => :image,  :src => image_path("heart.svg") %>
+      <% end %> 
+    </div>
+
   </div>
+
 </div>
 
-   <div class = "card col-md-8 mt-4 mb-5 m-auto  p-3 d-flex" >
-    <% if @post.comments.length > 0 %>
-      <h3>Comments for post# <%=  @post.id %> </h3>
-        <div>
-            <% @post.comments.each do |comment| %>
-                <p><%= comment.author.name %>: <%= comment.text %></p>
-            <% end %>
-        </div>
-    <% else %>
-      <h3>No comments for post# <%=  post.id %> </h3>
-    <% end %>
+<div class = "card col-md-8 mt-4 mb-5 m-auto  p-3 d-flex" >
+<% if @post.comments.length > 0 %>
+  <h3>Comments for post# <%=  @post.id %> </h3>
+  <div>
+      <% @post.comments.each do |comment| %>
+          <p><%= comment.author.name %>: <%= comment.text %></p>
+      <% end %>
+
+  </div>
+  <% else %>
+    <h3>No comments for post# <%=  @post.id %> </h3>
+  <% end %>
+</div>
+
+<div class="row form">
+  <%= form_with  url: "#{@post.id}/comments", scope: :comment do |form| %>
+    <div class= "col-sm-8 m-auto d-flex mt-3" >
+      <%= form.text_area :text, class:"form-control col-12", autofocus: true, placeholder: "White your comment...", rows: 10, required: true %>
     </div>
+    <div class= "col-sm-8 m-auto d-flex mt-2" >
+        <%= form.submit "Comment", class: "btn btn-sm btn-outline-success" %>
+    </div>
+  <% end %>
+</div>
 
   <div class="row">
     <div class = "col-md-10 m-auto pb-5 d-flex justify-content-center" >
