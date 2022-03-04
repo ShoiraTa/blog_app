@@ -2,14 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   describe 'Post model' do
-
     before(:all) do
       user = User.new(name: 'TestUser', posts_counter: 0)
       user.save
     end
 
-     subject{ Post.new(title: 'Title', text: 'text test', comments_counter: 1, likes_counter: 0,  user_id: 1 ) }
-     before { subject.save }
+    subject { Post.new(title: 'Title', text: 'text test', comments_counter: 1, likes_counter: 0, user_id: 1) }
+    before { subject.save }
 
     it 'Comments_counter should be integer' do
       expect(subject).to be_valid
@@ -30,6 +29,5 @@ RSpec.describe Post, type: :model do
       subject.update_posts_counter
       expect(User.find(1).posts_counter).to eq(old_posts_counter + 1)
     end
-
   end
 end

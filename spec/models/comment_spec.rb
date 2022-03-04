@@ -2,34 +2,29 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   describe 'Comment model' do
-
     before(:all) do
       user = User.new(name: 'TestUser', posts_counter: 0)
+      post = Post.new(title: 'Title', text: 'text test', comments_counter: 1, likes_counter: 0, user_id: 1)
       user.save
+      post.save
     end
 
-     subject{ Comment.new( text: 'Comment',  likes_counter: 0,  user_id: 1 ) }
-     before { subject.save }
+    subject { Comment.new(text: 'Comment', author: User.find(1), post: Post.first) }
+    before { subject.save }
 
-    it 'Comments_counter should be integer' do
+    it 'likes_counter should be integer and text should be present' do
       expect(subject).to be_valid
     end
 
     it 'Title should be present' do
-      subject.title = nil
+      subject.text = nil
       expect(subject).to_not be_valid
     end
 
-    it 'Comments_counter should be present' do
-      subject.comments_counter = nil
-      expect(subject).to_not be_valid
+    it 'Increases the comments_counter' do
+      old_comments_counter = Post.find(32).comments_counter
+      subject.update_comments_counter
+      expect(Post.find(32).comments_counter).to eq(old_comments_counter + 1)
     end
-
-    it 'Increases the comments' do
-      old_posts_counter = User.find(1).posts_counter
-      subject.update_posts_counter
-      expect(User.find(1).posts_counter).to eq(old_posts_counter + 1)
-    end
-
   end
 end
