@@ -15,7 +15,6 @@ RSpec.describe 'Posts', type: :request do
     it 'renders correct template' do
       expect(response).to render_template(:index)
     end
-
   end
 end
 
@@ -27,7 +26,6 @@ RSpec.describe 'Posts', type: :request do
       @user.save
       @post.save
       get '/users/1/posts/32'
-
     end
 
     it 'http request is successfull' do

@@ -4,7 +4,7 @@ RSpec.describe Like, type: :model do
   describe 'like model' do
     before(:all) do
       user = User.new(name: 'TestUser', posts_counter: 0)
-      post = Post.new(title: 'Title', text: 'text test', likes_counter: 1, likes_counter: 0, user_id: 1)
+      post = Post.new(title: 'Title', text: 'text test', likes_counter: 1, user_id: 1)
       user.save
       post.save
     end

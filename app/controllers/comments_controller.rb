@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:success] = 'Comment was created'
       redirect_to "/users/#{@post.user_id}/posts/#{@post.id}"
-    else 
+    else
       redirect_to "/users/#{@post.user_id}/posts/#{@post.id}"
       flash[:danger] = 'Comment was not created, please fill in all fields'
     end
