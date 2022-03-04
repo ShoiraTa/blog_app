@@ -3,11 +3,13 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :request do
   describe 'GET /index' do
     before(:each) do
+      @user = User.new(name: 'TestUser', posts_counter: 0)
+      @user.save
       get '/users'
     end
 
     it 'renders correct placeholder text ' do
-      expect(response.body).to include('Users index page')
+      expect(response.body).to include('List of all users')
     end
 
     it 'renders correct template' do
@@ -19,15 +21,16 @@ RSpec.describe 'Users', type: :request do
     end
   end
 end
-
 RSpec.describe 'Users', type: :request do
   describe 'GET /show' do
     before(:each) do
-      get '/users/:id'
+      @user = User.new(name: 'TestUser', posts_counter: 0)
+      @user.save
+      get '/users/1'
     end
 
     it 'renders correct placeholder text ' do
-      expect(response.body).to include('Users show page')
+      expect(response.body).to include(@user.name)
     end
 
     it 'renders correct template' do

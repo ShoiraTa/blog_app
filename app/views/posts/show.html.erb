@@ -1,4 +1,3 @@
-
 <div class = "bg-light card col-md-8 m-auto mt-5  p-3" >
 
   <div class="mb-3 d-flex flex-row justify-content-between">
@@ -42,10 +41,10 @@
 <div class="row form">
   <%= form_with  url: "#{@post.id}/comments", scope: :comment do |form| %>
     <div class= "col-sm-8 m-auto d-flex mt-3" >
-      <%= form.text_area :text, class:"form-control col-12", autofocus: true, placeholder: "White your comment...", rows: 10, required: true %>
+      <%= form.text_area :text, class:"form-control col-12", autofocus: true, placeholder: "White your comment...", rows: 10%>
     </div>
     <div class= "col-sm-8 m-auto d-flex mt-2" >
-        <%= form.submit "Comment", class: "btn btn-sm btn-outline-success" %>
+        <%= form.submit "Comment", class: "btn btn-sm btn-outline-success submit-btn" %>
     </div>
   <% end %>
 </div>
@@ -58,4 +57,6 @@
     </div>
   </div>
   
+
+
 

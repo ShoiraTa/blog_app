@@ -11,6 +11,13 @@
   </head>
 
   <body>
+    <% if flash.any? %>
+      <%= render 'layouts/messages' %>
+    <% end %>
+
     <%= yield %>
+
+
+
   </body>
 </html>

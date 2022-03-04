@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Posts', type: :request do
   describe 'GET /index' do
     before(:each) do
-      get '/users/:user_id/posts'
+      @user = User.new(name: 'TestUser', posts_counter: 0)
+      @user.save
+      get '/users/1/posts'
     end
 
     it 'http request is successfull' do
@@ -13,29 +15,26 @@ RSpec.describe 'Posts', type: :request do
     it 'renders correct template' do
       expect(response).to render_template(:index)
     end
-
-    it 'renders correct placeholder text' do
-      expect(response.body).to include('Posts index page')
-    end
   end
 end
 
 RSpec.describe 'Posts', type: :request do
   describe 'GET /index' do
     before(:each) do
-      get '/users/:user_id/posts/:id'
+      @user = User.new(name: 'TestUser', posts_counter: 0)
+      @post = Post.new(title: 'Title', text: 'text test', comments_counter: 1, likes_counter: 0, user_id: 1)
+      @user.save
+      @post.save
+      get '/users/1/posts/32'
     end
 
     it 'http request is successfull' do
+      puts @post.id
       expect(response).to have_http_status(:success)
     end
 
     it 'renders correct template' do
       expect(response).to render_template(:show)
-    end
-
-    it 'renders correct placeholder text' do
-      expect(response.body).to include('Posts show page')
     end
   end
 end

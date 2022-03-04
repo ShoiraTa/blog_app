@@ -24,6 +24,7 @@ class PostsController < ApplicationController
       redirect_to "/users/#{@post.author.id}/posts/"
     else
       render :new
+      flash.now[:alert] = 'ERROR. ERROR.'
     end
   end
 
