@@ -1,6 +1,20 @@
+
+<% if @post.errors.any? %>
+  <div >
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @post.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <h1 class="text-center mt-5">Create a new post</h1>
  <div class="row form">
-    <%=  form_with model: @post, url: user_posts_path do |f| %>
+    <%=  form_with model: @post, url: user_posts_path,data: { turbo: false } do |f| %>
       
       <div class= "col-sm-8 m-auto d-flex mt-5" >
         <%= f.label "Title:", class: "col-sm-2 col-form-label text-start" %> 
@@ -16,7 +30,7 @@
        <div class= "col-sm-2 col-form-label" > 
        </div>
 
-       <div class="m-2">
+       <div class="m-2 select">
         <%= f.submit class: "btn btn-sm btn-outline-success submit-btn" %>
        </div>
        <div class="m-2">
@@ -28,5 +42,9 @@
 
     </div>
 </div>
+
+<script>
+  document.querySelector('.submit-btn').addEventListener('click', () => {window.location.reload(true);});
+</script>
 
  
