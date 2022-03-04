@@ -2,9 +2,12 @@ class LikesController < ApplicationController
   before_action :find_post
 
   def create
-    @post.likes.create(user_id: current_user.id)
+    return if @post.liked?(current_user)
 
+    @post.likes.create(user_id: current_user.id)
+    flash[:success] = 'Post was liked'
     redirect_to "/users/#{@post.user_id}/posts/#{@post.id}"
+
   end
 
   private
