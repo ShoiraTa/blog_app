@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/CUofzTFYL50', bio: 'Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the ')
+user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/CUofzTFYL50', bio: ' Lassical literature, discovered the ',posts_counter: 0, password: 'password', email: 'mail@mail.com' )
 user = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/sRgls0QgQas', bio: 'Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by')
 user = User.create(name: 'Anna', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.')
 user = User.create(name: 'Jim', photo: 'https://unsplash.com/photos/Fqy09yweFSc', bio: 'eed to be sure there isnt anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefin')
