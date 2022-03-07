@@ -6,8 +6,8 @@ ruby '3.1.0'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
 gem 'letter_opener', group: :development
+gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -46,10 +46,10 @@ gem 'bootsnap', require: false
 
 # Use Sass to process CSS
 gem 'bootstrap', '~> 5.1.3'
+gem 'devise'
 gem 'jquery-rails'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'turbolinks-form'
-gem 'devise'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem 'rails-controller-testing'
