@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments)
@@ -11,6 +12,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @post = Post.new
   end
 
@@ -36,6 +38,7 @@ class PostsController < ApplicationController
     user.save
     flash[:success] = 'You have deleted this post successfully!'
     redirect_to user_path(current_user.id)
+    authorize! :destroy, @post
   end
 
   private
