@@ -45,8 +45,12 @@
     <% end %>
     <div class="row">
       <div class = "m-auto pb-2 d-flex" >
-        <div class= "mt-4">
-          <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class='btn btn-xs btn-outline-primary'><p class="m-0">See this post</p></a>
+        <div class= "mt-4 d-flex">
+          <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class='btn btn-xs btn-outline-primary mx-2'><p class="m-0">See this post</p></a>
+           
+           <% if can? :destroy, post %>
+            <%= button_to "Delete ", user_post_path(@user.id, post.id), :method => :delete, data: {confirm: 'Are you sure? '}, class: 'btn btn-xs btn-outline-danger' %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -59,11 +63,11 @@
   <div class="row">
     <div class = "col-md-10 m-auto pb-5 d-flex justify-content-center" >
       <div class= "mt-4">
-        <%= link_to "See all users", root_url, class:'btn btn-xs btn-outline-success' %>  
+        <%= link_to " users", root_url, class:'btn btn-xs btn-outline-success' %>  
       </div>
     </div>
   </div>
-  
+   <%= link_to 'Create a new post', new_user_post_url(@user) , class: 'btn btn-outline-success btn-sm'%>
 </div>
 
 

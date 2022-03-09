@@ -14,8 +14,7 @@
 
 <h1 class="text-center mt-5">Create a new post</h1>
  <div class="row form">
-    <%=  form_with model: @post, url: user_posts_path,data: { turbo: false } do |f| %>
-      
+    <%=  form_with model: @post, scope: :post, url: user_posts_path do |f| %>
       <div class= "col-sm-8 m-auto d-flex mt-5" >
         <%= f.label "Title:", class: "col-sm-2 col-form-label text-start" %> 
         <%= f.text_field :title,   class:"form-control", placeholder: "Title of the article", autofocus: true %>
@@ -24,27 +23,28 @@
       <div class= "col-sm-8 m-auto d-flex mt-2" >
         <%= f.label "Description:", class: "col-sm-2 col-form-label" %> 
         <%= f.text_area :text, rows: 8,   class:"form-control", placeholder: "Description of the article", autofocus: true %>
-        </div>
       </div>
+
       <div class= "col-sm-8 m-auto d-flex mt-2" >
-       <div class= "col-sm-2 col-form-label" > 
-       </div>
+       
+        <div class= "col-sm-2 col-form-label" > 
+        </div>
 
        <div class="m-2 select">
         <%= f.submit class: "btn btn-sm btn-outline-success submit-btn" %>
        </div>
+
        <div class="m-2">
-       <%= link_to "See all users", root_url, class:' btn btn-sm btn-outline-primary ' %>
+         <%= link_to "See all users", root_url, class:' btn btn-sm btn-outline-primary ' %>
        </div>
+
       </div>
     <% end %>
-    <div class = " col-xs-4 col-xs-offset-4">
+  </div>
+    
 
-    </div>
-</div>
 
-<script>
-  document.querySelector('.submit-btn').addEventListener('click', () => {window.location.reload(true);});
-</script>
+
+
 
  
