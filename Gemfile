@@ -5,6 +5,8 @@ ruby '3.1.0'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+gem 'cancancan'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'letter_opener', group: :development
 gem 'rails', '~> 7.0.2', '>= 7.0.2.2'

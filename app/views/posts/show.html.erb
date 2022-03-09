@@ -19,7 +19,15 @@
         <%= f.submit "like", :type => :image,  :src => image_path("heart.svg") %>
       <% end %> 
     </div>
-
+<div class="row">
+      <div class = "m-auto pb-2 d-flex" >
+        <div class= "mt-4 d-flex">
+        <% if can? :destroy, @post %>
+            <%= button_to "Delete post", user_post_path(@user.id, @post.id), :method => :delete, data: {confirm: 'Are you sure? '}, class: 'btn btn-xs btn-outline-danger' %>
+        <% end%>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -29,13 +37,18 @@
   <h3>Comments for post# <%=  @post.id %> </h3>
   <div>
       <% @post.comments.each do |comment| %>
-          <p><%= comment.author.name %>: <%= comment.text %></p>
+      <div class= "d-flex justify-content-between my-2">
+        <p><%= comment.author.name %>: <%= comment.text %></p>
+        <% if can? :destroy, comment %>
+          <%= button_to "Delete comment", user_post_comment_path(comment_id: comment.id, post_id: @post.id, user_id: @post.author.id), :method => :delete, class: 'btn btn-xs btn-outline-danger'%>
+        <% end %>
+      </div>
       <% end %>
-
   </div>
   <% else %>
     <h3>No comments for post# <%=  @post.id %> </h3>
   <% end %>
+      
 </div>
 
 <div class="row form">

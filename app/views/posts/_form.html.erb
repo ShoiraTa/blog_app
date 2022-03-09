@@ -14,7 +14,7 @@
 
 <h1 class="text-center mt-5">Create a new post</h1>
  <div class="row form">
-    <%=  form_with model: @post, url: user_posts_path,data: { turbo: false } do |f| %>
+    <%=  form_with model: @post, url: user_posts_path, data: { turbo: false } do |f| %>
       
       <div class= "col-sm-8 m-auto d-flex mt-5" >
         <%= f.label "Title:", class: "col-sm-2 col-form-label text-start" %> 
@@ -43,8 +43,12 @@
     </div>
 </div>
 
-<script>
+<%
+=begin%>
+ <script>
   document.querySelector('.submit-btn').addEventListener('click', () => {window.location.reload(true);});
-</script>
+</script> 
+<%
+=end%>
 
  
