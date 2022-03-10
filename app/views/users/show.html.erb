@@ -29,7 +29,7 @@
   <% @user.three_recent_post.each do |post| %>
     <div class = "  card col-md-9 m-1  p-3 d-flex" >
 
-      <a href="/users/<%= @user.id %>/posts/<%= post.id %>"><p class="m-0"><h5> Post# <%=  post.id %> </h5></a>
+      <a href="/users/<%= @user.id %>/posts/<%= post.id %>"><p class="m-0"><h5> <%= post.title%></h5></a>
 
       <p><%= post.title %></p>
       <p><%= post.text %></p>
