@@ -8,6 +8,14 @@ RSpec.describe 'Login', type: :feature do
                    confirmed_at: Time.now
       visit new_user_session_path
     end
+    scenario ' I can see the username of all other users.' do
+    end
+    scenario 'I can see the profile picture for each user.' do
+    end
+    scenario 'I can see the number of posts each user has written.' do
+    end
+    scenario 'When I click on a user, I am redirected to that users show page.' do
+    end
 
   end
 end

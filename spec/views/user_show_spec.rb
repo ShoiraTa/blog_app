@@ -8,6 +8,27 @@ RSpec.describe 'Login', type: :feature do
                    confirmed_at: Time.now
 
     end
-
+    scenario 'endI can see the users profile picture.' do
+    end
+    scenario 'I can see the number of posts the user has written.' do
+    end
+    scenario 'I can see the users bio.' do
+    end
+    scenario 'I can see the users first 3 posts.' do
+    end
+    scenario 'I can see a button that lets me view all of a users posts.' do
+    end
+    scenario 'When I click a users post, it redirects me to that posts show page.' do
+    end
+    scenario 'When I click to see all posts, it redirects me to the users posts index page.' do
+    end
   end
 end
+
+
+
+
+
+
+
+
