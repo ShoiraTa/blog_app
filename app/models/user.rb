@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :posts, foreign_key: :user_id
   has_many :likes, foreign_key: :user_id
 
+  after_create :generate_api_token
+
   validates :name, presence: true
   validates :posts_counter, numericality: { only_integer: true }, comparison: { greater_than_or_equal_to: 0 }
 
@@ -17,5 +19,12 @@ class User < ActiveRecord::Base
 
   def admin?
     :role == 'admin'
+  end
+
+  private
+
+  def generate_api_token
+    self.api_token = Devise.friendly_token
+    save
   end
 end
