@@ -1,0 +1,1 @@
+Rabl.register!

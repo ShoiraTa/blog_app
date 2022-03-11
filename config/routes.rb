@@ -7,6 +7,16 @@ Rails.application.routes.draw do
   end
   
   root 'users#index' 
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: %i[show] do
+        resources :posts, only: %i[index] do
+          resources :comments, only: %i[create index]
+        end
+      end
+    end
+  end
   
   resources :users, only: %i[index show] do
     resources :posts, only: %i[index show new create destroy] do
